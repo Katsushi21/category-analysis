@@ -1,0 +1,76 @@
+# Next.js / フロントエンド
+/frontend/.next/
+/frontend/out/
+/frontend/node_modules/
+/frontend/.env
+/frontend/.env.local
+/frontend/.env.development.local
+/frontend/.env.test.local
+/frontend/.env.production.local
+/frontend/npm-debug.log*
+/frontend/yarn-debug.log*
+/frontend/yarn-error.log*
+/frontend/.vercel
+/frontend/.turbo
+
+# Python / バックエンド
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+/backend/.env
+/backend/app/.env
+/backend/venv/
+/backend/.venv/
+/backend/env/
+/backend/ENV/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# テスト関連
+.coverage
+htmlcov/
+.pytest_cache/
+
+# ログ
+*.log
+logs/
+
+# データベース
+*.sqlite3
+*.db
+
+# Docker関連
+.docker/
+docker-compose.override.yml
+
+# 一時ファイル・OS関連
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+.vs/
+*.code-workspace
+
+# キャッシュ
+.cache/
+.npm/
+
+# ビルド関連
+/dist/
+/build/
+/out/
+.parcel-cache/
+
+# その他
+.secrets
+.secret
+.env
+/html/
+/prompt/
+/docs/

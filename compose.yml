@@ -1,0 +1,53 @@
+version: "3.8"
+
+services:
+  # PostgreSQLデータベース
+  db:
+    image: postgres:15-alpine
+    container_name: category-analysis-db
+    environment:
+      POSTGRES_DB: categorydb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-db:/docker-entrypoint-initdb.d
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - app-network
+
+  # 統合アプリケーション（バックエンド+フロントエンド）
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: category-analysis-app
+    volumes:
+      - ./backend:/app/backend
+      - ./frontend:/app/frontend
+      - /app/frontend/node_modules
+      - /app/frontend/.next
+    ports:
+      - "3001:3001" # フロントエンドポート
+      - "8001:8001" # バックエンドポート
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - app-network
+
+volumes:
+  postgres_data:
+    name: category-analysis-postgres-data
+
+networks:
+  app-network:
+    driver: bridge

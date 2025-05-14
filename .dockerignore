@@ -1,0 +1,74 @@
+# Git関連
+.git
+.gitignore
+.github/
+
+# フロントエンド関連
+frontend/node_modules
+frontend/.next
+frontend/out
+frontend/coverage
+frontend/.turbo
+frontend/.vercel
+
+# バックエンド関連
+backend/__pycache__/
+backend/**/__pycache__/
+backend/**/**/__pycache__/
+backend/**/**/**/__pycache__/
+backend/venv/
+backend/.venv/
+backend/env/
+backend/.pytest_cache/
+backend/htmlcov/
+backend/.coverage
+
+# 環境変数（コンテナ実行時にマウントするため）
+**/.env
+**/.env.local
+**/.env.development.local
+**/.env.test.local
+**/.env.production.local
+
+# エディタ関連
+.idea/
+.vscode/
+.vs/
+*.code-workspace
+*.swp
+*.swo
+*~
+
+# OS関連
+.DS_Store
+Thumbs.db
+
+# ドキュメント関連
+README.md
+LICENSE
+docs/
+*.md
+!frontend/README.md
+!backend/README.md
+
+# ログ
+*.log
+logs/
+
+# テスト関連
+**/tests/
+**/test/
+**/test_*.py
+**/__tests__/
+**/jest.config.js
+**/jest.setup.js
+**/.coverage
+**/coverage/
+
+# その他
+**/*.bak
+**/*.tmp
+**/*.temp
+docker-compose*.yml
+Dockerfile*
+.dockerignore
