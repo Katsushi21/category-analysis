@@ -156,16 +156,17 @@ docker-compose up -d
 
 ### バックエンド環境変数
 
-| 変数名            | 説明                                     | デフォルト値                                        |
-| ----------------- | ---------------------------------------- | --------------------------------------------------- |
-| `DATABASE_URL`    | PostgreSQL データベースの接続 URL        | `postgresql://postgres:postgres@db:5432/categorydb` |
-| `API_HOST`        | API サーバーのホスト                     | `0.0.0.0`                                           |
-| `API_PORT`        | API サーバーのポート                     | `8001`                                              |
-| `DEBUG`           | デバッグモードの有効/無効                | `False`                                             |
-| `ENVIRONMENT`     | 実行環境（local/development/production） | `local`                                             |
-| `GEMINI_API_KEY`  | Google Gemini API キー                   | -                                                   |
-| `LOG_LEVEL`       | ロギングレベル                           | `INFO`                                              |
-| `ALLOWED_ORIGINS` | CORS 許可オリジン                        | `http://localhost:3001`                             |
+| 変数名              | 説明                                     | デフォルト値                                        |
+| ------------------- | ---------------------------------------- | --------------------------------------------------- |
+| `DATABASE_URL`      | PostgreSQL データベースの接続 URL        | `postgresql://postgres:postgres@db:5432/categorydb` |
+| `API_HOST`          | API サーバーのホスト                     | `0.0.0.0`                                           |
+| `API_PORT`          | API サーバーのポート                     | `8001`                                              |
+| `DEBUG`             | デバッグモードの有効/無効                | `False`                                             |
+| `ENVIRONMENT`       | 実行環境（local/development/production） | `local`                                             |
+| `GEMINI_API_KEY`    | Google Gemini API キー                   | -                                                   |
+| `GEMINI_MODEL_NAME` | Google Gemini モデル名                   | `gemini-2.0-flash`                                  |
+| `LOG_LEVEL`         | ロギングレベル                           | `INFO`                                              |
+| `ALLOWED_ORIGINS`   | CORS 許可オリジン                        | `http://localhost:3001`                             |
 
 ### フロントエンド環境変数
 

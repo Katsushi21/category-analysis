@@ -17,6 +17,7 @@ class Settings(BaseSettings):
 
     # Gemini API設定
     GEMINI_API_KEY: str = os.getenv("GEMINI_API_KEY", "")
+    GEMINI_MODEL_NAME: str = os.getenv("GEMINI_MODEL_NAME", "gemini-2.0-flash")
 
     # Claude API設定
     CLAUDE_API_KEY: str = os.getenv("CLAUDE_API_KEY", "")
