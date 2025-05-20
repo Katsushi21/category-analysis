@@ -38,6 +38,9 @@ class Settings(BaseSettings):
         "ALLOWED_ORIGINS", "http://localhost:3001,http://frontend:3001"
     )
 
+    # APIのベースパス
+    API_BASE_PATH: str = os.getenv("API_BASE_PATH", "/api")
+
     @property
     def CORS_ORIGINS(self) -> list:
         return self.ALLOWED_ORIGINS.split(",")
