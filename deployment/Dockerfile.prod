@@ -1,0 +1,53 @@
+FROM node:18-slim AS frontend-builder
+
+WORKDIR /app/frontend
+COPY frontend/package*.json ./
+RUN npm ci
+COPY frontend/ ./
+RUN npm run build
+
+FROM python:3.10-slim
+
+# 必要なパッケージのインストール
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    supervisor \
+    && rm -rf /var/lib/apt/lists/*
+
+# 作業ディレクトリの準備
+WORKDIR /app
+
+# バックエンドの依存関係をインストール
+COPY backend/requirements.txt /app/backend/
+RUN pip install --upgrade pip && \
+    pip install --no-cache-dir -r /app/backend/requirements.txt
+RUN pip install --no-cache-dir psycopg2-binary uvicorn
+
+# Playwrightのインストール(スクリーンショット機能用)
+RUN pip install playwright
+RUN python -m playwright install chromium
+RUN python -m playwright install-deps chromium
+
+# バックエンドのソースをコピー
+COPY backend /app/backend
+
+# フロントエンドのビルド済みファイルをコピー
+COPY --from=frontend-builder /app/frontend/.next /app/frontend/.next
+COPY --from=frontend-builder /app/frontend/public /app/frontend/public
+COPY --from=frontend-builder /app/frontend/package*.json /app/frontend/
+
+# 本番用のSupervisorの設定ファイル
+COPY deployment/supervisord.prod.conf /etc/supervisor/conf.d/supervisord.conf
+
+# ログディレクトリの作成
+RUN mkdir -p /var/log/supervisor /app/backend/logs
+
+# 本番用起動スクリプト
+COPY deployment/start-prod.sh /app/start.sh
+RUN chmod +x /app/start.sh
+
+# ポート設定
+EXPOSE 3001 8001
+
+# アプリケーションの起動
+CMD ["/app/start.sh"]
