@@ -75,7 +75,7 @@ ALLOWED_ORIGINS=http://localhost:3001
 
 ```
 # API設定
-NEXT_PUBLIC_API_BASE_URL=http://localhost:8001/api
+API_BASE_URL=http://localhost:8001/api
 
 # アプリケーション設定
 NEXT_PUBLIC_APP_ENV=development
@@ -170,13 +170,13 @@ docker-compose up -d
 
 ### フロントエンド環境変数
 
-| 変数名                     | 説明                          | デフォルト値                |
-| -------------------------- | ----------------------------- | --------------------------- |
-| `NEXT_PUBLIC_API_BASE_URL` | バックエンド API のベース URL | `http://localhost:8001/api` |
-| `NEXT_PUBLIC_APP_ENV`      | アプリケーション環境          | `development`               |
-| `NEXT_PUBLIC_API_MODE`     | API 接続モード（real/mock）   | `real`                      |
-| `NEXT_PUBLIC_BASE_PATH`    | アプリケーションのベースパス  | 空文字列（開発環境）        |
-| `NODE_ENV`                 | Node.js 環境                  | `development`               |
+| 変数名                  | 説明                          | デフォルト値                |
+| ----------------------- | ----------------------------- | --------------------------- |
+| `API_BASE_URL`          | バックエンド API のベース URL | `http://localhost:8001/api` |
+| `NEXT_PUBLIC_APP_ENV`   | アプリケーション環境          | `development`               |
+| `NEXT_PUBLIC_API_MODE`  | API 接続モード（real/mock）   | `real`                      |
+| `NEXT_PUBLIC_BASE_PATH` | アプリケーションのベースパス  | 空文字列（開発環境）        |
+| `NODE_ENV`              | Node.js 環境                  | `development`               |
 
 ## 開発用コマンド
 

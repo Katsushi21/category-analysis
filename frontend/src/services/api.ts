@@ -1,6 +1,7 @@
 import axios from "axios";
+import { config } from "../utils/config";
 
-const API_BASE_PATH = "http://localhost:8001/api";
+const API_BASE_PATH = config.apiBaseUrl;
 
 // APIクライアントの設定
 const apiClient = axios.create({
