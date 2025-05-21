@@ -40,8 +40,6 @@ RUN python -m playwright install-deps chromium
 
 # バックエンドのソースをコピー
 COPY ./backend /app/backend
-# 本番環境用.envファイルをコピー
-COPY ./backend/.env /app/backend/.env
 
 # フロントエンドのビルド済みファイルをコピー
 COPY --from=frontend-builder /app/frontend/.next /app/frontend/.next

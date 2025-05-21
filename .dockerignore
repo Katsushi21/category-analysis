@@ -23,13 +23,6 @@ backend/.pytest_cache/
 backend/htmlcov/
 backend/.coverage
 
-# 環境変数（コンテナ実行時にマウントするため）
-**/.env
-**/.env.local
-**/.env.development.local
-**/.env.test.local
-**/.env.production.local
-
 # エディタ関連
 .idea/
 .vscode/
