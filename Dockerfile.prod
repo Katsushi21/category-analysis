@@ -12,17 +12,7 @@ FROM python:3.10-slim
 RUN apt-get update && apt-get install -y \
     build-essential \
     supervisor \
-    curl \
-    gnupg \
     && rm -rf /var/lib/apt/lists/*
-
-# NodeJSをインストール
-RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
-    && apt-get install -y nodejs \
-    && rm -rf /var/lib/apt/lists/*
-
-# ノードバージョンの確認
-RUN node --version && npm --version
 
 # 作業ディレクトリの準備
 WORKDIR /app
@@ -44,6 +34,11 @@ COPY ./backend /app/backend
 # フロントエンドのビルド済みファイルをコピー
 COPY --from=frontend-builder /app/frontend/.next /app/frontend/.next
 COPY --from=frontend-builder /app/frontend/package*.json /app/frontend/
+
+# 本番環境用にnode_modulesをインストール
+WORKDIR /app/frontend
+RUN npm ci --only=production
+WORKDIR /app
 
 # 本番用のSupervisorの設定ファイル
 COPY ./supervisord.prod.conf /etc/supervisor/conf.d/supervisord.conf
