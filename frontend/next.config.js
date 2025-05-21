@@ -3,7 +3,8 @@ const nextConfig = {
   reactStrictMode: true,
   basePath: process.env.NEXT_PUBLIC_BASE_PATH || "",
   env: {
-    API_BASE_URL: process.env.API_BASE_URL || "http://localhost:8001/api",
+    NEXT_PUBLIC_API_BASE_URL:
+      process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8001/api",
   },
   images: {
     domains: ["localhost"],
@@ -12,8 +13,8 @@ const nextConfig = {
     return [
       {
         source: "/api/:path*",
-        destination: process.env.API_BASE_URL
-          ? `${process.env.API_BASE_URL}/:path*`
+        destination: process.env.NEXT_PUBLIC_API_BASE_URL
+          ? `${process.env.NEXT_PUBLIC_API_BASE_URL}/:path*`
           : "http://localhost:8001/api/:path*",
       },
     ];

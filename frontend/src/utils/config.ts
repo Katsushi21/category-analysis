@@ -3,14 +3,15 @@
  */
 
 // 環境変数のデフォルト値
-const DEFAULT_API_BASE_URL = "http://localhost:8001/api";
+const DEFAULT_NEXT_PUBLIC_API_BASE_URL = "http://localhost:8001/api";
 const DEFAULT_APP_ENV = "development";
 const DEFAULT_API_MODE = "real";
 
 // 設定オブジェクト
 export const config = {
   // API基本URL
-  apiBaseUrl: process.env.API_BASE_URL || DEFAULT_API_BASE_URL,
+  apiBaseUrl:
+    process.env.NEXT_PUBLIC_API_BASE_URL || DEFAULT_NEXT_PUBLIC_API_BASE_URL,
 
   // アプリケーション環境
   appEnv: process.env.NEXT_PUBLIC_APP_ENV || DEFAULT_APP_ENV,

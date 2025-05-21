@@ -8,7 +8,7 @@ services:
     environment:
       POSTGRES_DB: categorydb
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 本番環境用の安全なパスワード
+      POSTGRES_PASSWORD: 790491bf413ae78784ae87fe4ffa884d
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./init-db:/docker-entrypoint-initdb.d

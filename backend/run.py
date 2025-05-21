@@ -14,7 +14,6 @@ app = FastAPI(
     title="カテゴリ解析API",
     description="AIを使用してウェブサイトのコンテンツを解析し、カテゴリを判定するAPIです。",
     version="1.0.0",
-    root_path=settings.API_BASE_PATH,
 )
 
 
@@ -50,7 +49,7 @@ app.add_middleware(
 )
 
 # APIルーターを追加
-app.include_router(api_router, prefix="/api")
+app.include_router(api_router, prefix=settings.API_BASE_PATH)
 
 
 # ヘルスチェックエンドポイント
