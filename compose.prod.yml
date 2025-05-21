@@ -24,8 +24,8 @@ services:
   # 本番用アプリケーション
   app:
     build:
-      context: ..
-      dockerfile: ./deployment/Dockerfile.prod
+      context: .
+      dockerfile: Dockerfile.prod
     container_name: category-analysis-app
     ports:
       - "3001:3001" # フロントエンドポート
