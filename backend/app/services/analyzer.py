@@ -55,16 +55,9 @@ class WebsiteAnalyzer:
             # キャッシュミスまたは強制更新の場合は通常通り解析
             # Webページの内容を取得
             content = await self.crawler.fetch_url_content(url)
-            screenshot = await self.screenshotter.take_screenshot(
-                url,
-                format="jpeg",
-                compress=True,
-                quality=80,
-                max_size=(1200, 8000),
-            )
 
             # AIモデルを使ってカテゴリを判定
-            result = await self.ai_client.analyze_website(url, content, screenshot)
+            result = await self.ai_client.analyze_website(url, content)
 
             # 成功レスポンスの作成
             response = AnalysisResponse(url=url, status="success", analysis=result)

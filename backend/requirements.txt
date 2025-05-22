@@ -18,7 +18,3 @@ alembic==1.12.1
 
 # AI関連
 anthropic==0.49.0
-
-# スクリーンショット関連
-playwright==1.51.0
-pillow==10.2.0
