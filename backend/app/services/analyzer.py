@@ -14,7 +14,6 @@ from ..models.schema import (
 from ..models.database import AnalysisHistory, SessionLocal
 from ..utils.url_normalizer import normalize_url
 from .crawler import WebCrawler
-from .web_screenshotter import WebScreenshotter
 from .ai_client_factory import AIClientFactory
 
 logger = logging.getLogger(__name__)
@@ -23,7 +22,6 @@ logger = logging.getLogger(__name__)
 class WebsiteAnalyzer:
     def __init__(self):
         self.crawler = WebCrawler()
-        self.screenshotter = WebScreenshotter()
         self.ai_client = AIClientFactory.get_client()
         # キャッシュの有効期限（日数）
         self.cache_expiry_days = 7  # 設定ファイルから読み込むようにも可能

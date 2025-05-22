@@ -34,11 +34,6 @@ WORKDIR /app/frontend
 RUN npm ci
 WORKDIR /app
 
-# Playwrightのインストール(スクリーンショット機能用)
-RUN pip install playwright
-RUN python -m playwright install
-RUN python -m playwright install-deps
-
 # アプリケーションのソースをコピー
 COPY backend /app/backend
 COPY frontend /app/frontend
