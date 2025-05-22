@@ -172,7 +172,7 @@ export const getHistory = async (
   url_contains: string | null = null
 ): Promise<HistoryResponse> => {
   try {
-    const response = await apiClient.get("/analysis/history", {
+    const response = await apiClient.get("/analysis/history/", {
       params: {
         page,
         limit,
